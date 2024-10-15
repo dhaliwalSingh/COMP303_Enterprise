@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="/css/style.css" rel="stylesheet">
+    <title>Add New Sensor</title>
+</head>
+<body>
+<h1>Add New Sensor</h1>
+<form action="/add" method="post">
+    <div>
+        <label for="sensorName">Sensor Name:</label>
+        <input type="text" id="sensorName" name="sensorName" required>
+    </div>
+    <div>
+        <label for="sensorType">Sensor Type:</label>
+        <input type="text" id="sensorType" name="sensorType" required>
+    </div>
+    <div>
+        <label for="sensorPin">Sensor Pin (between 0 and 1000):</label>
+        <input type="number" id="sensorPin" name="sensorPin" min="0" max="1000" required>
+    </div>
+    <div>
+        <label for="sensorLocation">Sensor Location:</label>
+        <input type="text" id="sensorLocation" name="sensorLocation">
+    </div>
+    <div>
+        <label for="sensorStatus">Sensor Status:</label>
+        <select id="sensorStatus" name="sensorStatus" required>
+            <option value="">Please Select</option>
+            <option value="ON">ON</option>
+            <option value="OFF">OFF</option>
+        </select>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+<a href="/index">Back to Home</a>
+</body>
+</html>
