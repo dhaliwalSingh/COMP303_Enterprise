@@ -1,0 +1,150 @@
+/* Define color variables for consistency */
+:root {
+    --primary-color: #4A90E2;
+    --secondary-color: #FFFFFF;
+    --text-color: #333333;
+    --background-color: #F0F2F5;
+    --button-hover-color: #357ABD;
+    --card-background-color: #FFFFFF;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container for all content */
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    margin: 20px;
+    background: var(--card-background-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Center align titles */
+h1, h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin: 10px 0;
+}
+
+/* Styling for input fields and buttons */
+input[type="text"],
+input[type="password"],
+input[type="submit"],
+button {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button,
+input[type="submit"] {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: var(--button-hover-color);
+}
+
+/* Styling for links */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Layout for login and registration forms */
+.form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Enrolled courses layout */
+.course-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.course-list li {
+    background: var(--card-background-color);
+    padding: 10px;
+    margin: 5px 0;
+    border-left: 4px solid var(--primary-color);
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+/* Homepage specific layout */
+#homepage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcome-message {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: var(--primary-color);
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button-group a {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    margin: 0 5px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+
+.button-group a:hover {
+    background-color: var(--button-hover-color);
+}
+
+/* Confirmation message styling */
+.confirmation-message {
+    font-size: 1.1em;
+    color: var(--primary-color);
+    text-align: center;
+    margin: 20px 0;
+}

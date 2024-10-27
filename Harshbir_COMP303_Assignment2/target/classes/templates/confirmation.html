@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Confirmation</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Enrollment Confirmation</h1>
+    <p>Thank you, <span th:text="${student.firstname}">[First Name]</span> <span th:text="${student.lastname}">[Last Name]</span>, for enrolling!</p>
+
+    <div th:each="enrollment : ${enrollments}">
+        <p>Program: <span th:text="${enrollment.program.programName}">Program Name</span></p>
+        <p>Amount Paid: <span th:text="${enrollment.amountPaid}">Amount</span></p>
+        <p>Program Start Date: <span th:text="${enrollment.startDate}">Start Date</span></p>
+        <hr />
+    </div>
+
+    <a href="/index" class="button">Go to Homepage</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Available Programs</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script>
+        let programs = []; // Array to hold program data
+
+        // Function to fetch program data
+        async function fetchPrograms() {
+            console.log('Fetching programs...');
+            try {
+                const response = await fetch('/api/programs');
+                console.log('Response status:', response.status);
+                if (response.ok) {
+                    programs = await response.json();
+                    console.log('Fetched programs:', programs);
+                    displayPrograms(); // Call function to display programs after fetching
+                } else {
+                    console.error('Failed to fetch programs:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error fetching program data:', error);
+            }
+        }
+
+        // Function to display programs in the UI
+        function displayPrograms() {
+            const programContainer = document.getElementById('programContainer');
+            programContainer.innerHTML = ''; // Clear existing content
+
+            programs.forEach(program => {
+                const programElement = document.createElement('p');
+                programElement.innerHTML = `
+                    <strong>${program.programName}</strong> -
+                    <span>${program.fee}</span>
+                    <input type="checkbox" name="programCode" value="${program.programCode}"
+                           data-fee="${program.fee}" onchange="calculateTotal()">
+                `;
+                programContainer.appendChild(programElement); // Append program element to the container
+            });
+        }
+
+        // Function to calculate the total amount
+        function calculateTotal() {
+            const checkboxes = document.querySelectorAll('input[name="programCode"]:checked');
+            let total = 0;
+
+            checkboxes.forEach((checkbox) => {
+                const fee = parseFloat(checkbox.getAttribute('data-fee')); // Get fee from checkbox
+                if (!isNaN(fee)) {
+                    total += fee; // Add fee to total
+                }
+            });
+
+            const tax = total * 0.05; // 5% tax
+            const finalAmount = total + tax; // Total including tax
+
+            document.getElementById('amountPaid').value = finalAmount.toFixed(2); // Update the input field
+        }
+
+        // Fetch programs on page load
+        window.onload = fetchPrograms;
+    </script>
+</head>
+<body>
+<form action="/checkout" method="post">
+    <div id="programContainer">
+    </div> <!-- Container to dynamically insert programs -->
+    <label for="amountPaid">Amount Paid:</label>
+    <input type="text" id="amountPaid" name="amountPaid" readonly required>
+    <input type="hidden" name="studentId" th:value="${loggedInStudent.studentId}">
+    <button type="submit">Enroll</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Checkout</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Checkout</h1>
+    <p>Student: <span th:text="${student.firstName}">Student Name</span></p>
+    <p>Program: <span th:text="${program.name}">Program Name</span></p>
+    <p>Total Amount: <span th:text="${program.fee}">0.00</span></p>
+    <p>Amount Paid: <span th:text="${amountPaid}">0.00</span></p>
+    <a href="/confirmPayment" class="button">Confirm and Pay</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Homepage</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="container" id="homepage-container">
+    <h1>Welcome to the Homepage</h1>
+    <div class="welcome-message">
+        <p>Welcome back, <span th:text="${loggedInStudent.firstname}">Student</span>!</p>
+    </div>
+
+    <div class="button-group">
+        <a href="/programs">Add Programs</a>
+        <a href="/editProfile">Edit Profile</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <h2>Your Enrolled Courses</h2>
+    <ul class="course-list" th:if="${enrolledCourses}">
+        <li th:each="course : ${enrolledCourses}">
+            <span th:text="${course.program.programName}">Course Name</span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
